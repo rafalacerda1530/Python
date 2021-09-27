@@ -1,0 +1,39 @@
+"""
+Iteradores customizados
+
+criando um iterador
+
+o __iter__ e __next__ devem estar para criarmos o iterador
+"""
+
+
+class Contador:
+    def __init__(self, menor, maior):
+        self.menor = menor
+        self.maior = maior
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):  # ele esta criando a condição para quando o numero menor for maior ele parar
+        if self.menor < self.maior:
+            numero = self.menor
+            self.menor = self.menor + 1
+            return numero
+        raise StopIteration
+
+
+con = Contador(1, 6)
+
+it = iter(con)  # tornando ele iteravel
+
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+
+
+for n in Contador(1, 61):
+    print(n)
